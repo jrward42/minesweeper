@@ -1,7 +1,10 @@
+require_relative 'board.rb'
+
 class Minesweeper
 
   def initialize(player)
     @player = player
+    @board = Board.new
   end
 
   def play
@@ -13,8 +16,9 @@ class Minesweeper
   def take_turn
     pos = nil
     until valid_pos(pos)
-      pos=get_pos
+      pos = get_pos
     end
+    handle_response(pos)
   end
 
   def get_pos
@@ -30,7 +34,11 @@ class Minesweeper
   end
 
   def valid_pos?(pos)
+    pos.is_a?(Array)&& pos.all?(|i| i>=0 && i<= 8)
+  end
 
+  def handle_response(pos)
+    @board.handle_response(pos)
   end
 
 end

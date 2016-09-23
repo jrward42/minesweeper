@@ -1,7 +1,7 @@
 class Tile
 
-  attr_reader :bomb, :revealed, :flagged
-  attr_writer :neighbor_bombs
+  attr_reader :bomb, :flagged
+  attr_accessor :revealed, :neighbor_bombs
 
   def initialize(bomb, revealed = false, flagged = false)
     @bomb = bomb
